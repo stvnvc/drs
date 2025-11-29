@@ -3,6 +3,7 @@ import { UserList } from "../components/UserList";
 import { UserForm } from "../components/UserForm";
 import { getUsers } from "../services/userService";
 import type { User } from "../types";
+import { Button } from "../../../components/Button";
 
 export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
@@ -35,16 +36,13 @@ export default function UsersPage() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-4xl font-extrabold">Users</h1>
 
-        <button
+        <Button
           onClick={() => setShowForm((prev) => !prev)}
-          className="text-white bg-indigo-800 hover:bg-indigo-700 px-2 py-1 rounded flex items-center space-x-2"
+          variant="primary"
+          size="sm"
         >
-          <span
-            className={`transition-transform ${showForm ? "rotate-180" : ""}`}
-          >
-            ▼
-          </span>
-        </button>
+          {showForm ? "Hide Form ▲" : "Show Form ▼"}
+        </Button>
       </div>
 
       {showForm && <UserForm onUserAdded={handleUserAdded} />}

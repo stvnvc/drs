@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { createUser } from "../services/userService";
+import { Button } from "../../../components/Button";
 
 interface UserFormProps {
   onUserAdded?: () => void;
@@ -133,12 +134,14 @@ export const UserForm: React.FC<UserFormProps> = ({ onUserAdded }) => {
         />
       </div>
 
-      <button
-        type="submit"
-        className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-md transition-colors"
+      <Button
+        type="submit" 
+        variant="primary" 
+        size="md"
+        loading={status === "Sending..."}
       >
         Add User
-      </button>
+      </Button>
 
       {status && <p className="mt-2 text-gray-700">{status}</p>}
     </form>
