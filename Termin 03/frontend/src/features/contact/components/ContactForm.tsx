@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { sendContactMessage } from "../services/contactService";
+import { ENDPOINTS } from "../../../config/endpoints";
 import { Button } from "../../../components/Button";
 import { FiSend } from "react-icons/fi";
 
@@ -11,9 +12,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Contact form submit clicked", { name, email, message });
     setStatus("Sending...");
 
     try {
+      console.log("Calling sendContactMessage to", ENDPOINTS.contacts);
       const response = await sendContactMessage({ name, email, message });
       if (response) {
         setStatus("Message sent successfully!");

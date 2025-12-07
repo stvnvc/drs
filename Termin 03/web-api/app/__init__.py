@@ -2,6 +2,7 @@ from flask import Flask
 from .test_db import test_connection
 from .extensions import mongo, cors, socketio
 from .users import users_bp
+from .contact import contact_bp  
 
 def create_app() -> Flask:
     app = Flask(__name__)
@@ -21,5 +22,7 @@ def create_app() -> Flask:
 
     # Register blueprints
     app.register_blueprint(users_bp)
+    app.register_blueprint(contact_bp)
+
 
     return app
