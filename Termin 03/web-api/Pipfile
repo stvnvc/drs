@@ -11,6 +11,7 @@ pydantic = "*"
 flask-cors = "*"
 mailtrap = "*"
 email-validator = "*"
+flask-socketio = "*"
 
 [dev-packages]
 
